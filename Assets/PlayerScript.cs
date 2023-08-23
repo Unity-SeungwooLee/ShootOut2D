@@ -6,11 +6,20 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public float spd = 10;
+    private SpriteRenderer spr;
+    private Sprite[] player1Sprites;
+    private Sprite[] player2Sprites;
+    private Sprite[] player3Sprites;
+
     void Start()
     {
-        
+        spr = gameObject.GetComponent<SpriteRenderer>();
+        player1Sprites = Resources.LoadAll<Sprite>("Sprites/player/player1");
+        player2Sprites = Resources.LoadAll<Sprite>("Sprites/player/player2");
+        player3Sprites = Resources.LoadAll<Sprite>("Sprites/player/player3");
     }
-    public float spd = 10;
+    
     void Update()
     {
         float x = Input.GetAxisRaw("Horizontal");
@@ -22,21 +31,17 @@ public class PlayerScript : MonoBehaviour
 
         transform.Translate(dir * Time.deltaTime * spd);
 
-        SpriteRenderer spr = gameObject.GetComponent<SpriteRenderer>();
         if(Input.GetKey(KeyCode.UpArrow))
         {
-            Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/player/player3");
-            spr.sprite = sprites[0];
+            spr.sprite = player3Sprites[0];
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/player/player2");
-            spr.sprite = sprites[0];
+            spr.sprite = player2Sprites[0];
         }
         else
         {
-            Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/player/player1");
-            spr.sprite = sprites[0];
+            spr.sprite = player1Sprites[0];
         }
     }
 }
