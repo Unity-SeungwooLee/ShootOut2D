@@ -11,6 +11,8 @@ public class PlayerScript : MonoBehaviour
     private Sprite[] player1Sprites;
     private Sprite[] player2Sprites;
     private Sprite[] player3Sprites;
+    Vector3 min, max;
+    Vector2 colsize, chrsize;
 
     void Start()
     {
@@ -18,6 +20,12 @@ public class PlayerScript : MonoBehaviour
         player1Sprites = Resources.LoadAll<Sprite>("Sprites/player/player1");
         player2Sprites = Resources.LoadAll<Sprite>("Sprites/player/player2");
         player3Sprites = Resources.LoadAll<Sprite>("Sprites/player/player3");
+
+        min = new Vector3(-8, -4.5f, 0);
+        max = new Vector3(8, 4.5f, 0);
+
+        colsize = GetComponent<BoxCollider2D>().size;
+        chrsize = new Vector2(colsize.x / 2, colsize.y / 2);
     }
     
     void Update()
@@ -43,5 +51,13 @@ public class PlayerScript : MonoBehaviour
         {
             spr.sprite = player1Sprites[0];
         }
+
+        float nowX = transform.position.x;
+        float nowY = transform.position.y;
+
+        nowX = Mathf.Clamp(nowX, min.x + chrsize.x, max.x - chrsize.x);
+        nowY = Mathf.Clamp(nowY, min.y + chrsize.y, max.y - chrsize.y);
+
+        transform.position = new Vector3(nowX, nowY, transform.position.z);
     }
 }
