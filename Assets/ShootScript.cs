@@ -14,4 +14,13 @@ public class ShootScript : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        print(collision.tag);
+        if(collision.tag == "Asteroid")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
