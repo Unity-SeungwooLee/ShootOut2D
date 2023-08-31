@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ShootScript : MonoBehaviour
 {
+    public GameObject explosion;
+    public GameObject gem;
     public GameObject hitEffect;
     public float speed = 10;
 
@@ -27,6 +29,9 @@ public class ShootScript : MonoBehaviour
             Instantiate(hitEffect, transform.position, Quaternion.identity);
             if(asteroidScript.hp <= 0 )
             {
+                Instantiate(explosion, collision.transform.position, Quaternion.identity);
+                Vector3 randomPosGem = new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0);
+                Instantiate(gem, transform.position + randomPosGem, Quaternion.identity);
                 Destroy(collision.gameObject);
             }
             Destroy(gameObject);
