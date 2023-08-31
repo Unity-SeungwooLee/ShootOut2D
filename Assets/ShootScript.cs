@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ShootScript : MonoBehaviour
 {
+    public GameObject hitEffect;
     public float speed = 10;
 
     void Update()
@@ -23,6 +24,7 @@ public class ShootScript : MonoBehaviour
         {
             AsteroidScript asteroidScript = collision.gameObject.GetComponent<AsteroidScript>();
             asteroidScript.hp -= 3;
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
             if(asteroidScript.hp <= 0 )
             {
                 Destroy(collision.gameObject);
