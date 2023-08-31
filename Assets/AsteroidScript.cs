@@ -7,6 +7,7 @@ public class AsteroidScript : MonoBehaviour
 {
     public float asteroidSpeed = 5;
     public float rotationspeed = 30;
+    public int hp = 10;
 
     void Update()
     {

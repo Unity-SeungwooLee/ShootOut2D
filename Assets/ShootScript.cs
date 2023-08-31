@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class ShootScript : MonoBehaviour
@@ -20,7 +21,13 @@ public class ShootScript : MonoBehaviour
         print(collision.tag);
         if(collision.tag == "Asteroid")
         {
-            Destroy(this.gameObject);
+            AsteroidScript asteroidScript = collision.gameObject.GetComponent<AsteroidScript>();
+            asteroidScript.hp -= 3;
+            if(asteroidScript.hp <= 0 )
+            {
+                Destroy(collision.gameObject);
+            }
+            Destroy(gameObject);
         }
     }
 }
