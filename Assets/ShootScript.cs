@@ -31,7 +31,26 @@ public class ShootScript : MonoBehaviour
             {
                 Instantiate(explosion, collision.transform.position, Quaternion.identity);
                 Vector3 randomPosGem = new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0);
-                Instantiate(gem, transform.position + randomPosGem, Quaternion.identity);
+                GameObject gemObj = Instantiate(gem, transform.position + randomPosGem, Quaternion.identity);
+                GemScript gemScript = gemObj.GetComponent<GemScript>();
+                gemScript.gem = asteroidScript.gem;
+                Destroy(collision.gameObject);
+            }
+            Destroy(gameObject);
+        }
+
+        if (collision.tag == "Enemy")
+        {
+            EnemyScript enemyScript = collision.gameObject.GetComponent<EnemyScript>();
+            enemyScript.hp -= 3;
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
+            if (enemyScript.hp <= 0)
+            {
+                Instantiate(explosion, collision.transform.position, Quaternion.identity);
+                Vector3 randomPosGem = new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0);
+                GameObject gemObj = Instantiate(gem, transform.position + randomPosGem, Quaternion.identity);
+                GemScript gemScript = gemObj.GetComponent<GemScript>();
+                gemScript.gem = enemyScript.gem;
                 Destroy(collision.gameObject);
             }
             Destroy(gameObject);

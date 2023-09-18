@@ -95,4 +95,15 @@ public class PlayerScript : MonoBehaviour
 
         transform.position = new Vector3(nowX, nowY, transform.position.z);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Item")
+        {
+            GemScript gemScript = collision.gameObject.GetComponent<GemScript>();
+            GameManager.instance.gem += gemScript.gem;
+            print("Gem" + GameManager.instance.gem);
+            Destroy(collision.gameObject);
+        }
+    }
 }

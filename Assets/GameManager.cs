@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public List<GameObject> enemies;
     public GameObject asteroid;
     public float time = 0;
     public float spawnTime = 3;
-    float spawnSpeed;
+    public float spawnSpeed;
+    public float gem;
+
+    void Awake()
+    {
+        instance = this;
+    }
+    void Start()
+    {
+        gem = 0;
+    }
     void Update()
     {
         spawnSpeed = Random.Range(1.0f, 5.0f);
