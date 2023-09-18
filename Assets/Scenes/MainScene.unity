@@ -1062,6 +1062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271034839dffebb4bb04f2b01284f02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 7325987930528342067, guid: 8279f8f0baff20d41b1f27af53e58874, type: 3}
   speed: 10
   shoot: {fileID: 6476429332353479473, guid: 567290604853a7140b541f1398974983, type: 3}
   shootPointTransform: {fileID: 202095166}
@@ -1318,7 +1319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8d51473d5f1414480e0b76f3f60522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
   enemies:
   - {fileID: 5675637892742116435, guid: 930a4220d5724724cae3c0efbd52779a, type: 3}
   - {fileID: 6191827162080156344, guid: 6170d0b326683294b9eb91c2de5158b2, type: 3}
@@ -1326,7 +1326,7 @@ MonoBehaviour:
   time: 0
   spawnTime: 3
   spawnSpeed: 0
-  coin: 0
+  gem: 0
 --- !u!4 &1876720886
 Transform:
   m_ObjectHideFlags: 0

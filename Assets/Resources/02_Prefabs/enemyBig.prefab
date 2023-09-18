@@ -123,6 +123,10 @@ MonoBehaviour:
   type: 1
   hp: 3
   enemySpeed: 4
+  gem: 0
+  enemyShoot: {fileID: 4337941659652568444, guid: c7dee02ab3393de4ebdd9b56e583c41a, type: 3}
+  maxShootTime: 0
+  shootSpeed: 0
 --- !u!58 &6191827162080156346
 CircleCollider2D:
   m_ObjectHideFlags: 0

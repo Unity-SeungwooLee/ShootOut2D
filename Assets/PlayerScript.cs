@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public GameObject explosion;
     public float speed = 10;
     private SpriteRenderer spr;
     private Sprite[] player1Sprites;
@@ -104,6 +105,19 @@ public class PlayerScript : MonoBehaviour
             GameManager.instance.gem += gemScript.gem;
             print("Gem" + GameManager.instance.gem);
             Destroy(collision.gameObject);
+        }
+        else if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Asteroid")
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Instantiate(explosion, collision.gameObject.transform.position, Quaternion.identity);
+        }
+        else if (collision.gameObject.tag == "EnemyShoot")
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+            Instantiate(explosion, transform.position, Quaternion.identity);
         }
     }
 }
