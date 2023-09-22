@@ -103,7 +103,7 @@ public class PlayerScript : MonoBehaviour
         {
             GemScript gemScript = collision.gameObject.GetComponent<GemScript>();
             GameManager.instance.gem += gemScript.gem;
-            print("Gem" + GameManager.instance.gem);
+            GameManager.instance.gemScore.text = GameManager.instance.gem.ToString();
             Destroy(collision.gameObject);
         }
         else if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Asteroid")

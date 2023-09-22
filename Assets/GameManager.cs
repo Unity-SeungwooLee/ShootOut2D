@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public Text gemScore;
     public static GameManager instance;
     public List<GameObject> enemies;
     public GameObject asteroid;
@@ -19,6 +21,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gem = 0;
+        gemScore.text = gem.ToString();
     }
     void Update()
     {
