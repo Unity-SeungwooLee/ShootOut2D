@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Text gemScore;
+    public GameObject pauseMenu;
     public static GameManager instance;
     public List<GameObject> enemies;
     public GameObject asteroid;
@@ -42,5 +43,20 @@ public class GameManager : MonoBehaviour
                 Instantiate(enemies[type], new Vector3(Random.Range(9.0f, 12.0f), Random.Range(-4.0f, 4.0f), 0), Quaternion.identity);
             }
         }
+    }
+    public void PauseAction()
+    {
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+    }
+    public void ResumeAction()
+    {
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
+    }
+    public void MainMenuAction()
+    {
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
     }
 }
