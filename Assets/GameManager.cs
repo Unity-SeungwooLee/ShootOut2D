@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     public float spawnTime = 3;
     public float spawnSpeed;
     public float gem;
+    public float maxRight;
 
     void Awake()
     {
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     {
         gem = 0;
         gemScore.text = gem.ToString();
+        maxRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0)).x;
     }
     void Update()
     {
@@ -35,12 +38,12 @@ public class GameManager : MonoBehaviour
             int check = Random.Range(0, 2);
             if(check == 0)
             {
-                Instantiate(asteroid, new Vector3(Random.Range(9.0f, 12.0f), Random.Range(-4.0f, 4.0f), 0), Quaternion.identity);
+                Instantiate(asteroid, new Vector3(maxRight + Random.Range(2.0f, 5.0f), Random.Range(-4.0f, 4.0f), 0), Quaternion.identity);
             }
             else
             {
                 int type = Random.Range(0, 2);
-                Instantiate(enemies[type], new Vector3(Random.Range(9.0f, 12.0f), Random.Range(-4.0f, 4.0f), 0), Quaternion.identity);
+                Instantiate(enemies[type], new Vector3(maxRight + Random.Range(2.0f, 5.0f), Random.Range(-4.0f, 4.0f), 0), Quaternion.identity);
             }
         }
     }
@@ -58,5 +61,6 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+        SceneManager.LoadScene("MainMenuScene");
     }
 }

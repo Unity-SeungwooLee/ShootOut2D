@@ -25,8 +25,8 @@ public class PlayerScript : MonoBehaviour
         player2Sprites = Resources.LoadAll<Sprite>("01_Sprites/player/player2");
         player3Sprites = Resources.LoadAll<Sprite>("01_Sprites/player/player3");
 
-        min = new Vector3(-8, -4.5f, 0);
-        max = new Vector3(8, 4.5f, 0);
+        min = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
+        max = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
 
         colsize = GetComponent<BoxCollider2D>().size;
         chrsize = new Vector2(colsize.x / 2, colsize.y / 2);
